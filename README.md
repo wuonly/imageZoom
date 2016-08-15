@@ -2,13 +2,13 @@
 A very simple imageZoom plugin of jquery 
 
 ##Usage:
-<code>
+<pre>
 <link rel="stylesheet" type="text/css" href="../jquery.zoom.mic.css" />
 <script src="../jquery.zoom.mic.js"></script>
-</code>
+</pre>
 then 
-<code>
+<pre>
 <script>
 miczoom(); // or miczoom('containerid','imagesSelector');
 </script>
-</code>
+</pre>
