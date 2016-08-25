@@ -9,6 +9,10 @@ include
 ```
 then 
 ```
+<img zoomimg="true" src="xxx" />
+```
+then 
+```
 <script>
 miczoom(); // or miczoom('containerid','imagesSelector');
 </script>
