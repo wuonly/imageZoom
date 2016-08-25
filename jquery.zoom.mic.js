@@ -34,13 +34,11 @@ miczoom = mz = function() {
 							+ config.zoomImgclass + '" src="" />' + '</div>');
 			overlayDiv = $("#" + config.overlay);
 			zoomimg = $("#mczoomimg");
-
 		}
 		$('img[' + config.imageSelector + ']').each(function(index,element) {
 
 			var objEvt = $._data($(this)[0], "events");
 			if (objEvt && objEvt["click"]) {
-
 			} else {
 				$(this).click(function() {
 					zoomImage($(this).attr("src"));
