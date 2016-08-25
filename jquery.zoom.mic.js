@@ -1,5 +1,5 @@
 /**
- * @author Michael Ma
+ * @author Michael
  * @mail wuonly@gmail.com
  */
 'use strict';
@@ -36,8 +36,7 @@ miczoom = mz = function() {
 			zoomimg = $("#mczoomimg");
 
 		}
-
-		$('img[' + config.imageSelector + ']').each(function() {
+		$('img[' + config.imageSelector + ']').each(function(index,element) {
 
 			var objEvt = $._data($(this)[0], "events");
 			if (objEvt && objEvt["click"]) {
@@ -68,6 +67,49 @@ miczoom = mz = function() {
 			});
 		}
 	}
+	
+	var startx = 0;
+	var movedx = 0;
+	zoomimg.on(
+			'touchstart',
+			function(ev) {
+				console.log("touchstart start");
+				startx = 0;
+				movedx = 0;
+				$(this).css("position","relative");
+			});
+	zoomimg.on('touchmove', function(event) {
+		console.log("touchstart moved");
+		if (startx == 0)
+			startx = event.originalEvent.changedTouches[0].clientX;
+		movedx = event.originalEvent.changedTouches[0].clientX - startx;
+	
+		$(this).css("left",movedx);
+	});
+	zoomimg.on('touchend', function(ev) {
+		var index=$('img[' + config.imageSelector + ']').index($('img[src="'+zoomimg.attr("src")+'"]'));
+		var size=$('img[' + config.imageSelector + ']').size();
+		console.log("touchstart end"+size);
+		if (movedx >= 50&&index-1>=0) {
+			zoomimg.fadeOut("normal","swing",function(){
+				zoomimg.attr("src",$('img[' + config.imageSelector + ']').eq(index-1).attr("src"));
+				zoomimg.css("left","");
+				zoomimg.fadeIn("normal")
+			})
+		}
+		if (movedx <= -50 && index+1<=size) {
+			zoomimg.fadeOut("normal","swing",function(){
+				zoomimg.css("left","");
+				zoomimg.attr("src",$('img[' + config.imageSelector + ']').eq(index+1).attr("src"));
+				zoomimg.fadeIn("normal")
+			})
+		}
+		zoomimg.css("left","");
+		startx = 0;
+		movedx = 0;
+	});
+	
+	
 	function zoomImage(src) {
 		zoomimg.attr("src", src);
 		overlayDiv.toggle();
