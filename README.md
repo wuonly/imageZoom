@@ -1,6 +1,11 @@
 # imageZoom
 A very simple imageZoom plugin of jquery 
 
+##Feature
+1. zoom images
+2. slide betweem images
+3. to be add...^_^
+
 ##Usage:
 include
 ```
@@ -14,6 +19,6 @@ then
 then 
 ```
 <script>
-miczoom(); // or miczoom('containerid','imagesSelector');
+miczoom(); // or miczoom('containerid','zoomimg="true"');
 </script>
 ```
