@@ -3,7 +3,7 @@ A very simple imageZoom plugin of jquery
 
 ##Feature
 1. zoom images
-2. slide betweem images
+2. slide between images
 3. to be add...^_^
 
 ##Usage:
